@@ -17,7 +17,7 @@ public class DroidFactory : Singleton<DroidFactory>
 
     public List<Droid> LiveDroids
     {
-        get { return LiveDroids; }
+        get { return liveDroids; }
     }
 
     public Droid SelectedDroid
