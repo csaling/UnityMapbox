@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Assertions;
@@ -16,15 +17,22 @@ public class UIManager : MonoBehaviour
     Assert.IsNotNull(levelText);
     Assert.IsNotNull(menu);
    }
-   
-   public void updatelevel(int level)
+
+   private void Update()
    {
-    levelText.text = levelText.ToString();
+    updatelevel();
+    updateXP();
+   }
+
+   public void updatelevel()
+   {
+    levelText.text = GameManager.Instance.CurrentPlayer.Lvl.ToString();
    }
    
-   public void updateXP(int currentXP, int requiredXP)
+   public void updateXP()
    {
-    xpText.text = currentXP.ToString() + " / " + requiredXP.ToString();
+    xpText.text = GameManager.Instance.CurrentPlayer.Xp + 
+                  " / " + GameManager.Instance.CurrentPlayer.RequiredXp;
    }
    
    public void toggleMenu()

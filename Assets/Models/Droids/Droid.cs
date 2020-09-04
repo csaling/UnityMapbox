@@ -45,7 +45,7 @@ public class Droid : MonoBehaviour
         PocketDroidsSceneManager[] managers = FindObjectsOfType<PocketDroidsSceneManager>();
         foreach (PocketDroidsSceneManager pocketDroidsSceneManager in managers)
         {
-            if (pocketDroidsSceneManager.gameObject.activateSelf)
+            if (pocketDroidsSceneManager.gameObject.activeSelf)
             {
                 pocketDroidsSceneManager.droidTapped(this.gameObject);
             }
