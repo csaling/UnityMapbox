@@ -659,10 +659,10 @@ PlayerSettings:
     m_VersionCode: 1
     m_VersionName: 
   apiCompatibilityLevel: 6
-  cloudProjectId: 1b2bca4d-d0b4-43df-b508-c0af4b3ef1d3
+  cloudProjectId: 
   framebufferDepthMemorylessMode: 0
-  projectName: PocketDriods GO
-  organizationId: csaling
+  projectName: 
+  organizationId: 
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0
   disableOldInputManagerSupport: 0
