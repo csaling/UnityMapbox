@@ -9,7 +9,7 @@ public class Droid : MonoBehaviour
     [SerializeField] private float spawnRate = 0.10f;
     [SerializeField] private float catchRate = 0.10f;
     [SerializeField] private int attack = 0;
-    [SerializeField] private int defence = 0;
+    [SerializeField] private int defense = 0;
     [SerializeField] private int hp = 10;
     [SerializeField] private AudioClip crySound;
 
@@ -22,11 +22,6 @@ public class Droid : MonoBehaviour
         Assert.IsNotNull(crySound);
     }
 
-    private void start()
-    {
-        DontDestroyOnLoad(this);
-    }
-    
     public float SpawnRate
     {
         get { return spawnRate; }
@@ -42,14 +37,19 @@ public class Droid : MonoBehaviour
         get { return attack; }
     }
     
-    public int Defence
+    public int Defense
     {
-        get { return defence; }
+        get { return defense; }
     }
     
     public int Hp
     {
         get { return hp; }
+    }
+
+    public AudioClip CrySound
+    {
+        get { return crySound; }
     }
 
     private void OnMouseDown()

@@ -6,15 +6,21 @@ using UnityEngine.Assertions;
 
 public class GameManager : Singleton<GameManager>
 {
-    [SerializeField] private Player currentPlayer;
+    private Player currentPlayer;
 
     public Player CurrentPlayer
     {
-        get { return currentPlayer; }
-    }
+        get
+        {
+            if (currentPlayer == null)
+            {
+                
+                currentPlayer = gameObject.AddComponent<Player>();
+                
+            }
 
-    private void Awake()
-    {
-        Assert.IsNotNull(currentPlayer);
+            return currentPlayer;
+            
+        }
     }
 }

@@ -9,6 +9,7 @@ public class CaptureSceneManager : PocketDroidsSceneManager
     [SerializeField] private Vector3 spawnPoint;
 
     private int currentThrowAttempts;
+    private CaptureSceneStatus status = CaptureSceneStatus.Inprogress;
 
     public int MaxThrowAttempts
     {
@@ -18,6 +19,11 @@ public class CaptureSceneManager : PocketDroidsSceneManager
     public int CurrentThrowAttempts
     {
         get { return currentThrowAttempts; }
+    }
+
+    public CaptureSceneStatus Status
+    {
+        get { return status; }
     }
 
     private void Start()
@@ -37,7 +43,12 @@ public class CaptureSceneManager : PocketDroidsSceneManager
 
         if (currentThrowAttempts <= 0)
         {
-            //run some code to end the session
+            if (status != CaptureSceneStatus.Successful)
+            {
+                status = CaptureSceneStatus.Failed;
+                Invoke("MoveToWorldScene", 2.0f);
+                 
+            }
         }
 
         else
@@ -54,5 +65,17 @@ public class CaptureSceneManager : PocketDroidsSceneManager
     public override void droidTapped(GameObject droid)
     {
         print("CaptureSceneManager.droidTapped activated");
+    }
+
+    public override void droidCollision(GameObject droid, Collision other)
+    {
+        status = CaptureSceneStatus.Successful;
+        Invoke("MoveToWorldScene", 2.0f);
+    }
+
+    private void MoveToWorldScene()
+    {
+        SceneTransitionManager.Instance.GoToScene(PocketDroidsConstants.SCENE_WORLD,
+            new List<GameObject>());
     }
 }
